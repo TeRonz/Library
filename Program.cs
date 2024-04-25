@@ -121,7 +121,7 @@ string AddTitle()
         case 'n':
             return AddTitle();
 
-        default: return title;
+        default: return AddTitle();
     }
 }
 
