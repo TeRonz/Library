@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.ObjectModel;
 namespace Library
 {
     public class Librarian
     {
-
         public Collection<Book> Books { get; set; }
         public Librarian()
         {
@@ -23,7 +15,6 @@ namespace Library
                 new Book(5, "Harry Potter and the Half Blood Prince", "J.K.Rowling", true, DateTime.Now),
                 new Book(6, "Harry Potter and the Deathly Hallows", "J.K.Rowling", true, DateTime.Now)
                 ];
-
         }
 
         public void AddBook(Book book)
@@ -73,7 +64,7 @@ namespace Library
 
         public Collection<Book> CalculateOverdueBooks()
         {
-             return [.. Books.Where(book => !book.Available && ((DateTime.Now - book.CheckInOutTime).TotalMinutes > 1))];  
+             return [.. Books.Where(book => !book.Available && ((DateTime.Now - book.CheckInOutTime).TotalMinutes > 1)).OrderBy(x => x.CheckInOutTime)];  
         }
         public bool IsIdValid(int id)
         {
@@ -87,6 +78,5 @@ namespace Library
                 book.Id = Books.IndexOf(book);
             }
         }
-
     }
 }

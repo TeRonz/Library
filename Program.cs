@@ -97,7 +97,6 @@ void ListBooks()
     foreach (Book book in librarian.Books)
     {
         Console.WriteLine("Id: " + book.Id + " Title: " + book.Title + ", Author: " + book.Author + ", Available: " + book.Available);
-
     }
 }
 
